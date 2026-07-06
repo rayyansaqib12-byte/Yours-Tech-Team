@@ -51,7 +51,7 @@ export function Navigation({currentPage, onNavigate}: NavigationProps) {
                         <img
                             src={mevanLogo}
                             alt="Mevan AI Logo"
-                            className="h-20 w-auto object-contain"
+                            className="h-18 w-auto object-contain"
                         />
                     </motion.div>
 
