@@ -3,8 +3,10 @@ import {Star, Play, Quote, Users, TrendingUp, Award, Check, Video, Phone, ArrowR
 import {useState} from 'react';
 import rebeccaVideo from '../assets/videos/Rebecca.mp4';
 import stephenVideo from '../assets/videos/Stephen.mov';
+import suzanneVideo from '../assets/videos/Suzanne.mp4';
 import rebeccaImage from '../assets/images/Rebecca.jpg';
 import stephenImage from '../assets/images/Stephen.jpg';
+import suzanneImage from '../assets/images/Suzanne.jpg';
 
 type Page = 'home' | 'about' | 'services' | 'contact' | 'testimonials';
 
@@ -19,6 +21,16 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
     const videoTestimonials = [
         {
             id: 1,
+            name: 'Suzanne Wright',
+            role: 'Founder, The Connection Rebellion',
+            thumbnail: suzanneImage,
+            videoUrl: suzanneVideo,
+            rating: 5,
+            category: 'va-support',
+            preview: 'The team is highly skilled and guides in absolute detail. Highly recommended...',
+        },
+        {
+            id: 2,
             name: 'Rebecca Bertoldi',
             role: 'Digital Marketing Consultant',
             thumbnail: rebeccaImage,
@@ -28,7 +40,7 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
             preview: 'Top notch communication and deliver excellent quality services...',
         },
         {
-            id: 2,
+            id: 3,
             name: 'Stephen Bakarich',
             role: 'Founder, Aspire Artist Academy',
             thumbnail: stephenImage,
