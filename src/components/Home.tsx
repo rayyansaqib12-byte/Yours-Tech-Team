@@ -37,7 +37,7 @@ export function Home({onNavigate}: HomeProps) {
         },
         {
             name: "Sarah Williams",
-            text: "Haris was great and took his time with me to make sure everything was setup correctly. I love MevanAI and highly recommend!",
+            text: "Haris was great and took his time with me to make sure everything was setup correctly. I love Atomatify and highly recommend!",
         },
         {
             name: "Kaream Mills",
@@ -45,7 +45,7 @@ export function Home({onNavigate}: HomeProps) {
         },
         {
             name: "Terherah Harris",
-            text: "Haris, Waiz and the team at Mevan have been fantastic out of the gate. They have provided support for our agency that we needed and we are excited about the partnership moving forward!",
+            text: "Haris, Waiz and the team at Atomatify have been fantastic out of the gate. They have provided support for our agency that we needed and we are excited about the partnership moving forward!",
         },
     ];
 
@@ -835,7 +835,7 @@ export function Home({onNavigate}: HomeProps) {
                 </span>
                             </h2>
                             <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-                                Join 150+ successful businesses who have accelerated their growth with Mevan AI. Don't
+                                Join 150+ successful businesses who have accelerated their growth with Atomatify. Don't
                                 pay too much for the wrong things - get professional technology solutions at the right
                                 price!
                             </p>
