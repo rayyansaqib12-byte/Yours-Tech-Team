@@ -1,4 +1,4 @@
-# Mevan AI Website
+# Atomatify Website
 
 **Designed and Developed by Raja Hamid**
 
