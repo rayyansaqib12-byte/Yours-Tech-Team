@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {motion, AnimatePresence} from 'motion/react';
 import {Menu, X, Calendar} from 'lucide-react';
-import mevanLogo from '../assets/images/Logo.png';
+import atomatifyLogo from '../assets/images/Logo.png';
 
 type Page = 'home' | 'about' | 'services' | 'contact' | 'testimonials';
 
@@ -49,8 +49,8 @@ export function Navigation({currentPage, onNavigate}: NavigationProps) {
                         onClick={() => onNavigate('home')}
                     >
                         <img
-                            src={mevanLogo}
-                            alt="Mevan AI Logo"
+                            src={atomatifyLogo}
+                            alt="Atomatify Logo"
                             className="h-18 w-auto object-contain"
                         />
                     </motion.div>

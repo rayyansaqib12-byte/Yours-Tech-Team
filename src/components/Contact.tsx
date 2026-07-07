@@ -25,7 +25,7 @@ export function Contact() {
         {
             icon: Mail,
             title: 'E-Mail',
-            content: 'info@mevan.ai',
+            content: 'info@atomatify.com',
             gradient: 'from-cyan-500 to-teal-500',
         },
         {

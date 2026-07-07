@@ -1,6 +1,6 @@
 import {motion} from 'motion/react';
 import {Mail, Phone, MapPin} from 'lucide-react';
-import mevanLogo from "../assets/images/Logo.png";
+import atomatifyLogo from "../assets/images/Logo.png";
 
 type Page = 'home' | 'about' | 'services' | 'contact' | 'testimonials';
 
@@ -36,8 +36,8 @@ export function Footer({onNavigate}: FooterProps) {
                         >
                             <div className="relative ml-12">
                                 <img
-                                    src={mevanLogo}
-                                    alt="Mevan AI Logo"
+                                    src={atomatifyLogo}
+                                    alt="Atomatify Logo"
                                     className="h-18 w-auto object-contain"
                                 />
                             </div>
@@ -46,10 +46,10 @@ export function Footer({onNavigate}: FooterProps) {
                             Drive growth, retain customers, and scale up effortlessly with Atomatify.
                         </p>
                         <a
-                            href="mailto:info@mevan.ai"
+                            href="mailto:info@atomatify.com"
                             className="text-cyan-400 hover:text-cyan-300 transition-colors"
                         >
-                            info@mevan.ai
+                            info@atomatify.com
                         </a>
                     </div>
 
@@ -103,8 +103,8 @@ export function Footer({onNavigate}: FooterProps) {
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
                                 <Mail className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
-                                <a href="mailto:info@mevan.ai" className="hover:text-cyan-400 transition-colors">
-                                    info@mevan.ai
+                                <a href="mailto:info@atomatify.com" className="hover:text-cyan-400 transition-colors">
+                                    info@atomatify.com
                                 </a>
                             </li>
                         </ul>
