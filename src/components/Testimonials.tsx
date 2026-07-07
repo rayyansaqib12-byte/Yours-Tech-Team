@@ -65,7 +65,7 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
             name: 'Sarah Williams',
             role: 'Marketing Director',
             rating: 5,
-            text: "Haris was great and took his time with me to make sure everything was setup correctly. I love MevanAI and highly recommend! The attention to detail and customer service is unmatched in the industry.",
+            text: "Haris was great and took his time with me to make sure everything was setup correctly. I love Atomatify and highly recommend! The attention to detail and customer service is unmatched in the industry.",
             date: 'January 2024',
             avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80',
             verified: true,
@@ -83,7 +83,7 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
             name: 'Terherah Harris',
             role: 'Business Owner',
             rating: 5,
-            text: "Haris, Waiz and the team at Mevan have been fantastic out of the gate. They have provided support for our agency that we needed and we are excited about the partnership moving forward! The results speak for themselves.",
+            text: "Haris, Waiz and the team at Atomatify have been fantastic out of the gate. They have provided support for our agency that we needed and we are excited about the partnership moving forward! The results speak for themselves.",
             date: 'October 2023',
             avatar: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&q=80',
             verified: true,
@@ -101,7 +101,7 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
             name: 'Emily Rodriguez',
             role: 'Operations Manager',
             rating: 5,
-            text: "Our virtual assistant from Mevan AI has been a game-changer. Highly skilled, reliable, and always goes above and beyond. We've saved countless hours and improved our efficiency dramatically.",
+            text: "Our virtual assistant from Atomatify has been a game-changer. Highly skilled, reliable, and always goes above and beyond. We've saved countless hours and improved our efficiency dramatically.",
             date: 'January 2024',
             avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80',
             verified: true,
@@ -154,7 +154,7 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
                         </h1>
                         <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                             Don't just take our word for it. Hear directly from our clients about their experience
-                            working with Mevan AI and the transformative results they've achieved.
+                            working with Atomatify and the transformative results they've achieved.
                         </p>
                     </motion.div>
                 </div>
