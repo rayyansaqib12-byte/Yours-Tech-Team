@@ -43,7 +43,7 @@ export function Footer({onNavigate}: FooterProps) {
                             </div>
                         </motion.div>
                         <p className="text-gray-400 leading-relaxed mb-6">
-                            Drive growth, retain customers, and scale up effortlessly with Mevan AI.
+                            Drive growth, retain customers, and scale up effortlessly with Atomatify.
                         </p>
                         <a
                             href="mailto:info@mevan.ai"
@@ -97,8 +97,8 @@ export function Footer({onNavigate}: FooterProps) {
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
                                 <Phone className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
-                                <a href="tel:+923165511771" className="hover:text-cyan-400 transition-colors">
-                                    +923165511771
+                                <a href="tel:+923264699918" className="hover:text-cyan-400 transition-colors">
+                                    +923264699918
                                 </a>
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
@@ -114,7 +114,7 @@ export function Footer({onNavigate}: FooterProps) {
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-white/10">
                     <div className="text-center text-gray-400">
-                        <p>© Copyright Mevan. All rights reserved.</p>
+                        <p>© Copyright Atomatify. All rights reserved.</p>
                     </div>
                 </div>
             </div>
