@@ -18,7 +18,7 @@ export function About({onNavigate}: AboutProps) {
         {
             year: '2021',
             title: 'Foundation & Innovation',
-            description: 'In 2021, Mevan AI introduced AI chatbots and virtual assistants, helping businesses enhance customer engagement and improve efficiency.',
+            description: 'In 2021, Atomatify introduced AI chatbots and virtual assistants, helping businesses enhance customer engagement and improve efficiency.',
         },
         {
             year: '2022',
@@ -127,7 +127,7 @@ export function About({onNavigate}: AboutProps) {
                 </span>
                             </h2>
                             <p className="text-gray-400 text-lg leading-relaxed">
-                                At Mevan AI, we specialize in AI chatbot setup, virtual assistant support, and GHL
+                                At Atomatify, we specialize in AI chatbot setup, virtual assistant support, and GHL
                                 automation to streamline operations and enhance customer engagement. Our mission is to
                                 help businesses leverage AI technology for efficiency, growth, and success in the
                                 digital era.
