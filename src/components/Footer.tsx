@@ -106,8 +106,8 @@ export function Footer({onNavigate}: FooterProps) {
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
                                 <Mail className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
-                                <a href="mailto:info@mevan.ai" className="hover:text-cyan-400 transition-colors">
-                                    info@mevan.ai
+                                <a href="mailto:info@atomatify.com" className="hover:text-cyan-400 transition-colors">
+                                    info@atomatify.com
                                 </a>
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
@@ -128,7 +128,7 @@ export function Footer({onNavigate}: FooterProps) {
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-white/10">
                     <div className="text-center text-gray-400">
-                        <p>© Copyright Mevan. All rights reserved.</p>
+                        <p>© Copyright Atomatify. All rights reserved.</p>
                     </div>
                 </div>
             </div>
