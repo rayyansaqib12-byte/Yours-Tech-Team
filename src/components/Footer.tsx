@@ -100,8 +100,8 @@ export function Footer({onNavigate}: FooterProps) {
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
                                 <Phone className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
-                                <a href="tel:+923264699918" className="hover:text-cyan-400 transition-colors">
-                                    +923264699918
+                                <a href="tel:+923099346619" className="hover:text-cyan-400 transition-colors">
+                                    +923099346619
                                 </a>
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
