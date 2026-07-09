@@ -13,13 +13,13 @@ export function Contact() {
         {
             icon: MapPin,
             title: 'Address',
-            content: 'London Eye, London, UK',
+            content: 'Rawalpindi, PK',
             gradient: 'from-cyan-500 to-teal-500',
         },
         {
             icon: Phone,
             title: 'Phone Number',
-            content: '+923165511771',
+            content: '+923264699918',
             gradient: 'from-teal-500 to-cyan-500',
         },
         {
