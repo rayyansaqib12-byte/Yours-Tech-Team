@@ -42,7 +42,7 @@ export function Footer({onNavigate}: FooterProps) {
                                 />
                             </div>
                             <span className="text-xl font-bold bg-linear-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                                Mevan AI
+
                             </span>
                         </motion.div>
                         <p className="text-gray-400 leading-relaxed mb-6">
