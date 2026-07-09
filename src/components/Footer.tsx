@@ -49,10 +49,10 @@ export function Footer({onNavigate}: FooterProps) {
                             Drive growth, retain customers, and scale up effortlessly with Mevan AI.
                         </p>
                         <a
-                            href="mailto:info@mevan.ai"
+                            href="mailto:info@atomatify.com"
                             className="text-cyan-400 hover:text-cyan-300 transition-colors"
                         >
-                            info@mevan.ai
+                            info@atomatify.com
                         </a>
                     </div>
 
