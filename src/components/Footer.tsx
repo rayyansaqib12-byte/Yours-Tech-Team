@@ -96,12 +96,12 @@ export function Footer({onNavigate}: FooterProps) {
                         <ul className="space-y-3">
                             <li className="flex items-start gap-2 text-gray-400">
                                 <MapPin className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
-                                <span>London, UK</span>
+                                <span>Rawalpindi, PK</span>
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
                                 <Phone className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
-                                <a href="tel:+923165511771" className="hover:text-cyan-400 transition-colors">
-                                    +923165511771
+                                <a href="tel:+923264699918" className="hover:text-cyan-400 transition-colors">
+                                    +923264699918
                                 </a>
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
@@ -118,7 +118,7 @@ export function Footer({onNavigate}: FooterProps) {
                                     rel="noopener noreferrer"
                                     className="hover:text-cyan-400 transition-colors"
                                 >
-                                    LinkedIn
+                                    https://www.linkedin.com/company/atomatify/
                                 </a>
                             </li>
                         </ul>
