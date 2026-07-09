@@ -31,7 +31,7 @@ export function Contact() {
         {
             icon: Linkedin,
             title: 'LinkedIn',
-            content: 'www.linkedin.com/company/mevan-ai/',
+            content: 'www.linkedin.com/company/atomatify/',
             gradient: 'from-cyan-500 to-teal-600',
         }
     ];
