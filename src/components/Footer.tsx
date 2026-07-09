@@ -118,7 +118,7 @@ export function Footer({onNavigate}: FooterProps) {
                                     rel="noopener noreferrer"
                                     className="hover:text-cyan-400 transition-colors"
                                 >
-                                    https://www.linkedin.com/company/atomatify/
+                                    LinkedIn
                                 </a>
                             </li>
                         </ul>
