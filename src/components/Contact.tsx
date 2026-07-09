@@ -19,7 +19,7 @@ export function Contact() {
         {
             icon: Phone,
             title: 'Phone Number',
-            content: '+923264699918',
+            content: '+923099346619',
             gradient: 'from-teal-500 to-cyan-500',
         },
         {
