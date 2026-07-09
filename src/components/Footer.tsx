@@ -1,6 +1,6 @@
 import {motion} from 'motion/react';
-import {Mail, Phone, MapPin} from 'lucide-react';
-import atomatifyLogo from "../assets/images/Logo.png";
+import {Linkedin, Mail, Phone, MapPin} from 'lucide-react';
+import mevanLogo from "../assets/images/Logo.png";
 
 type Page = 'home' | 'about' | 'services' | 'contact' | 'testimonials';
 
@@ -34,22 +34,25 @@ export function Footer({onNavigate}: FooterProps) {
                             className="flex items-center gap-2 mb-4 cursor-pointer"
                             onClick={() => onNavigate('home')}
                         >
-                            <div className="relative ml-12">
+                            <div className="relative">
                                 <img
-                                    src={atomatifyLogo}
-                                    alt="Atomatify Logo"
-                                    className="h-18 w-auto object-contain"
+                                    src={mevanLogo}
+                                    alt="Mevan AI Logo"
+                                    className="h-12 w-auto object-contain"
                                 />
                             </div>
+                            <span className="text-xl font-bold bg-linear-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                                Mevan AI
+                            </span>
                         </motion.div>
                         <p className="text-gray-400 leading-relaxed mb-6">
-                            Drive growth, retain customers, and scale up effortlessly with Atomatify.
+                            Drive growth, retain customers, and scale up effortlessly with Mevan AI.
                         </p>
                         <a
-                            href="mailto:info@atomatify.com"
+                            href="mailto:info@mevan.ai"
                             className="text-cyan-400 hover:text-cyan-300 transition-colors"
                         >
-                            info@atomatify.com
+                            info@mevan.ai
                         </a>
                     </div>
 
@@ -97,14 +100,25 @@ export function Footer({onNavigate}: FooterProps) {
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
                                 <Phone className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
-                                <a href="tel:+923264699918" className="hover:text-cyan-400 transition-colors">
-                                    +923264699918
+                                <a href="tel:+923165511771" className="hover:text-cyan-400 transition-colors">
+                                    +923165511771
                                 </a>
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
                                 <Mail className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
-                                <a href="mailto:info@atomatify.com" className="hover:text-cyan-400 transition-colors">
-                                    info@atomatify.com
+                                <a href="mailto:info@mevan.ai" className="hover:text-cyan-400 transition-colors">
+                                    info@mevan.ai
+                                </a>
+                            </li>
+                            <li className="flex items-start gap-2 text-gray-400">
+                                <Linkedin className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
+                                <a
+                                    href="https://www.linkedin.com/company/atomatify/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-cyan-400 transition-colors"
+                                >
+                                    LinkedIn
                                 </a>
                             </li>
                         </ul>
@@ -114,7 +128,7 @@ export function Footer({onNavigate}: FooterProps) {
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-white/10">
                     <div className="text-center text-gray-400">
-                        <p>© Copyright Atomatify. All rights reserved.</p>
+                        <p>© Copyright Mevan. All rights reserved.</p>
                     </div>
                 </div>
             </div>
