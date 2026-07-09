@@ -38,7 +38,7 @@ export function Footer({onNavigate}: FooterProps) {
                                 <img
                                     src={mevanLogo}
                                     alt="Mevan AI Logo"
-                                    className="h-12 w-auto object-contain"
+                                    className="h-18 w-auto object-contain"
                                 />
                             </div>
                             <span className="text-xl font-bold bg-linear-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
