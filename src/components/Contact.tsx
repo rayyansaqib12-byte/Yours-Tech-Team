@@ -13,13 +13,13 @@ export function Contact() {
         {
             icon: MapPin,
             title: 'Address',
-            content: 'London Eye, London, UK',
+            content: 'Rawalpindi, PK',
             gradient: 'from-cyan-500 to-teal-500',
         },
         {
             icon: Phone,
             title: 'Phone Number',
-            content: '+923165511771',
+            content: '+923099346619',
             gradient: 'from-teal-500 to-cyan-500',
         },
         {
@@ -31,7 +31,7 @@ export function Contact() {
         {
             icon: Linkedin,
             title: 'LinkedIn',
-            content: 'www.linkedin.com/company/mevan-ai/',
+            content: 'www.linkedin.com/company/atomatify/',
             gradient: 'from-cyan-500 to-teal-600',
         }
     ];

@@ -1,6 +1,6 @@
 import {motion} from 'motion/react';
-import {Mail, Phone, MapPin} from 'lucide-react';
-import atomatifyLogo from "../assets/images/Logo.png";
+import {Linkedin, Mail, Phone, MapPin} from 'lucide-react';
+import mevanLogo from "../assets/images/Logo.png";
 
 type Page = 'home' | 'about' | 'services' | 'contact' | 'testimonials';
 
@@ -19,7 +19,7 @@ export function Footer({onNavigate}: FooterProps) {
 
     const services = [
         {label: 'AI ChatBot Setup & Training', serviceId: 'ai-chatbot'},
-        {label: 'Custom Web Apps & Dashboards', serviceId: 'web-apps'},
+        {label: 'Dedicated VA Support', serviceId: 'va-support'},
         {label: 'GHL Setup 360', serviceId: 'ghl-setup'},
     ];
 
@@ -29,28 +29,24 @@ export function Footer({onNavigate}: FooterProps) {
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Brand */}
                     <div>
-                        <motion.button
-                            type="button"
+                        <motion.div
                             whileHover={{scale: 1.05}}
-                            className="flex items-center gap-2 mb-4 cursor-pointer rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
+                            className="flex items-center gap-2 mb-4 cursor-pointer"
                             onClick={() => onNavigate('home')}
-                            aria-label="Atomatify — go to home"
                         >
-                            {/* was `ml-12`, which hard-indented the logo 48px out of line with its column */}
                             <div className="relative">
                                 <img
-                                    src={atomatifyLogo}
-                                    alt=""
-                                    width={128}
-                                    height={72}
-                                    loading="lazy"
-                                    decoding="async"
+                                    src={mevanLogo}
+                                    alt="Mevan AI Logo"
                                     className="h-18 w-auto object-contain"
                                 />
                             </div>
-                        </motion.button>
+                            <span className="text-xl font-bold bg-linear-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+
+                            </span>
+                        </motion.div>
                         <p className="text-gray-400 leading-relaxed mb-6">
-                            Drive growth, retain customers, and scale up effortlessly with Atomatify.
+                            Drive growth, retain customers, and scale up effortlessly with Mevan AI.
                         </p>
                         <a
                             href="mailto:info@atomatify.com"
@@ -100,18 +96,29 @@ export function Footer({onNavigate}: FooterProps) {
                         <ul className="space-y-3">
                             <li className="flex items-start gap-2 text-gray-400">
                                 <MapPin className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
-                                <span>London, UK</span>
+                                <span>Rawalpindi, PK</span>
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
                                 <Phone className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
-                                <a href="tel:+923264699918" className="hover:text-cyan-400 transition-colors">
-                                    +923264699918
+                                <a href="tel:+923099346619" className="hover:text-cyan-400 transition-colors">
+                                    +923099346619
                                 </a>
                             </li>
                             <li className="flex items-start gap-2 text-gray-400">
                                 <Mail className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
                                 <a href="mailto:info@atomatify.com" className="hover:text-cyan-400 transition-colors">
                                     info@atomatify.com
+                                </a>
+                            </li>
+                            <li className="flex items-start gap-2 text-gray-400">
+                                <Linkedin className="w-5 h-5 shrink-0 mt-0.5 text-cyan-400"/>
+                                <a
+                                    href="https://www.linkedin.com/company/atomatify/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-cyan-400 transition-colors"
+                                >
+                                    LinkedIn
                                 </a>
                             </li>
                         </ul>
