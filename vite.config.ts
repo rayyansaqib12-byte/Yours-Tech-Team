@@ -16,14 +16,20 @@ export default defineConfig({
     // Optimize chunk splitting for better caching
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom'],
-          'vendor-motion': ['motion'],
-          'vendor-radix': [
-            '@radix-ui/react-dialog',
-            '@radix-ui/react-dropdown-menu',
-            '@radix-ui/react-navigation-menu',
-          ],
+        // A function, not the object form: the object form matched only the bare entry
+        // points, so react-dom's ~130 kB ended up in the app chunk and invalidated on
+        // every content change instead of caching separately.
+        manualChunks(id) {
+          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/') ||
+              id.includes('node_modules/scheduler')) {
+            return 'vendor-react';
+          }
+          if (id.includes('node_modules/motion') || id.includes('node_modules/framer-motion')) {
+            return 'vendor-motion';
+          }
+          if (id.includes('node_modules/lucide-react')) {
+            return 'vendor-icons';
+          }
         },
       },
     },

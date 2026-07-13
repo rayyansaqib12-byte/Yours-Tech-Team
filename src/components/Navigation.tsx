@@ -43,17 +43,22 @@ export function Navigation({currentPage, onNavigate}: NavigationProps) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-22">
                     {/* Logo */}
-                    <motion.div
+                    <motion.button
+                        type="button"
                         whileHover={{scale: 1.05}}
-                        className="flex items-center gap-2 cursor-pointer"
+                        className="flex items-center gap-2 cursor-pointer rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
                         onClick={() => onNavigate('home')}
+                        aria-label="Atomatify — go to home"
                     >
                         <img
                             src={atomatifyLogo}
-                            alt="Atomatify Logo"
+                            alt=""
+                            width={128}
+                            height={72}
+                            fetchPriority="high"
                             className="h-18 w-auto object-contain"
                         />
-                    </motion.div>
+                    </motion.button>
 
 
                     {/* Desktop Navigation */}
@@ -135,17 +140,16 @@ export function Navigation({currentPage, onNavigate}: NavigationProps) {
                                     {item.label}
                                 </button>
                             ))}
-                            <a
+                            <button
+                                type="button"
                                 onClick={() => {
                                     onNavigate('contact');
                                     setIsMobileMenuOpen(false);
                                 }}
-                                target="_blank"
-                                rel="noopener noreferrer"
                                 className="block w-full bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 px-6 py-3 rounded-lg text-white font-medium text-center"
                             >
                                 Schedule A Call
-                            </a>
+                            </button>
                         </div>
                     </motion.div>
                 )}

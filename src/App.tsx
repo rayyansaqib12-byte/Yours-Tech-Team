@@ -21,8 +21,22 @@ export default function App() {
     const [currentPage, setCurrentPage] = useState<Page>(getPageFromHash);
     const [targetService, setTargetService] = useState<string | null>(null);
 
+    /*
+     * Contact is mounted on first visit and then NEVER unmounted — it stays in the tree
+     * behind `display: none` so its GoHighLevel iframes are never re-fetched (see CLAUDE.md).
+     *
+     * What changed: it used to mount on the very first render of every route, which meant
+     * the booking-calendar and contact-form iframes fetched on the homepage too — 137
+     * requests to leadconnectorhq before a visitor had shown any interest. Deferring the
+     * first mount keeps the never-unmount guarantee while not paying for it up front.
+     */
+    const [contactMounted, setContactMounted] = useState(() => getPageFromHash() === 'contact');
+
     const handleNavigate = useCallback((page: Page, serviceId?: string) => {
         setCurrentPage(page);
+        if (page === 'contact') {
+            setContactMounted(true);
+        }
         window.location.hash = page === 'home' ? '' : page;
         if (page === 'services' && serviceId) {
             setTargetService(serviceId);
@@ -32,7 +46,13 @@ export default function App() {
     }, []);
 
     useEffect(() => {
-        const onHashChange = () => setCurrentPage(getPageFromHash());
+        const onHashChange = () => {
+            const page = getPageFromHash();
+            setCurrentPage(page);
+            if (page === 'contact') {
+                setContactMounted(true);
+            }
+        };
         window.addEventListener('hashchange', onHashChange);
         return () => window.removeEventListener('hashchange', onHashChange);
     }, []);
@@ -60,11 +80,21 @@ export default function App() {
         <div
             className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
             <AnimatedBackground/>
-            <Navigation currentPage={currentPage} onNavigate={handleNavigate}/>
-            <main className="relative z-10">
-                <div style={{ display: currentPage === 'contact' ? 'block' : 'none' }}>
-                    <Contact/>
-                </div>
+            <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:rounded-lg focus:bg-slate-900 focus:text-white focus:outline-2 focus:outline-cyan-400"
+            >
+                Skip to content
+            </a>
+            <header>
+                <Navigation currentPage={currentPage} onNavigate={handleNavigate}/>
+            </header>
+            <main id="main-content" className="relative z-10">
+                {contactMounted && (
+                    <div style={{display: currentPage === 'contact' ? 'block' : 'none'}}>
+                        <Contact/>
+                    </div>
+                )}
                 {currentPage !== 'contact' && renderPage()}
             </main>
             <Footer onNavigate={handleNavigate}/>

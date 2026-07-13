@@ -1,5 +1,6 @@
 import {motion} from 'motion/react';
-import {Users, TrendingUp, Target, Sparkles, Zap, Shield, ArrowRight} from 'lucide-react';
+import {Users, TrendingUp, Target, Sparkles, Zap, Shield} from 'lucide-react';
+import {GradientButton} from './GradientButton';
 
 type Page = 'home' | 'about' | 'services' | 'contact' | 'testimonials';
 
@@ -73,9 +74,8 @@ export function About({onNavigate}: AboutProps) {
               </span>
                         </h1>
                         <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                            Get the Business Strategies & the Technology Team you need to accelerate your business in
-                            the digital age. Use technology to solve your customer's challenges and maximize your
-                            company's profits to unlimited potential.
+                            Atomatify is the build team agencies hand their client work to. We ship the systems you
+                            sell — quietly, under your brand, and on the timeline you promised.
                         </p>
                     </motion.div>
                 </div>
@@ -123,14 +123,14 @@ export function About({onNavigate}: AboutProps) {
                         >
                             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
                 <span className="bg-linear-to-r from-cyan-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                  Empowering Businesses with AI-Driven Solutions
+                  The Build Team Your Clients Never Meet
                 </span>
                             </h2>
                             <p className="text-gray-400 text-lg leading-relaxed">
-                                At Atomatify, we specialize in AI chatbot setup, virtual assistant support, and GHL
-                                automation to streamline operations and enhance customer engagement. Our mission is to
-                                help businesses leverage AI technology for efficiency, growth, and success in the
-                                digital era.
+                                At Atomatify, we build AI automations, chatbots, custom web apps and GoHighLevel
+                                implementations for agencies and GHL specialists — under their brand, not ours. You
+                                keep the client relationship and the credit. We do the engineering, document it, and
+                                hand it over.
                             </p>
                         </motion.div>
 
@@ -295,25 +295,9 @@ export function About({onNavigate}: AboutProps) {
                                     chatbot solutions to seamless automation and virtual assistance, we provide
                                     cutting-edge technology that drives efficiency, productivity, and growth.
                                 </p>
-                                <motion.button
-                                    onClick={() => onNavigate('contact')}
-                                    whileHover={{scale: 1.05}}
-                                    whileTap={{scale: 0.95}}
-                                    className="relative group pt-8"
-                                >
-                                    <div
-                                        className="absolute inset-0 bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition-opacity"></div>
-                                    <div
-                                        className="relative bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 px-8 py-4 rounded-full text-white font-semibold flex items-center gap-2">
-                                        Schedule An Appointment
-                                        <motion.div
-                                            animate={{x: [0, 5, 0]}}
-                                            transition={{duration: 1.5, repeat: Infinity}}
-                                        >
-                                            <ArrowRight className="w-5 h-5"/>
-                                        </motion.div>
-                                    </div>
-                                </motion.button>
+                                <GradientButton onClick={() => onNavigate('contact')} className="mt-8">
+                                    Schedule An Appointment
+                                </GradientButton>
                             </motion.div>
                         </div>
                     </div>

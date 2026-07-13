@@ -119,6 +119,25 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/**
+ * Marquee for the "we build on" logo strip. Deliberately a CSS animation rather than a
+ * motion/react loop: it costs no main-thread JS, and the prefers-reduced-motion block
+ * below already neutralises CSS animations (the component also sets motion-reduce:animate-none).
+ * The track renders its items twice and travels -50%, so the loop is seamless.
+ */
+@theme {
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

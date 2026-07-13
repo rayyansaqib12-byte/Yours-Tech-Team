@@ -1,4 +1,4 @@
-import {motion} from 'motion/react';
+import {motion, useReducedMotion} from 'motion/react';
 import {
     ArrowRight,
     Sparkles,
@@ -6,19 +6,24 @@ import {
     Shield,
     TrendingUp,
     Bot,
-    Users,
+    LayoutDashboard,
     Settings,
     Star,
     ChevronLeft,
     ChevronRight,
     Check,
     Rocket,
-    Target,
     Award, Phone
 } from 'lucide-react';
 import {useState} from 'react';
 import {FloatingElements} from './FloatingElements';
 import {CountUpStat} from './CountUpStat';
+import {SectionHeading} from './SectionHeading';
+import {GlowCard} from './GlowCard';
+import {GradientButton} from './GradientButton';
+import {LogoSlider} from './LogoSlider';
+import {CoreExpertise} from './CoreExpertise';
+import {SocialProofWall} from './SocialProofWall';
 
 type Page = 'home' | 'about' | 'services' | 'contact' | 'testimonials';
 
@@ -28,7 +33,9 @@ interface HomeProps {
 
 export function Home({onNavigate}: HomeProps) {
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
-    const [hoveredService, setHoveredService] = useState<number | null>(null);
+    // The CSS reduced-motion block in globals.css only neutralises CSS animations; these
+    // are JS-driven motion loops and have to opt out themselves.
+    const reduceMotion = useReducedMotion();
 
     const testimonials = [
         {
@@ -67,7 +74,7 @@ export function Home({onNavigate}: HomeProps) {
                 <div className="absolute inset-0">
                     <motion.div
                         className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"
-                        animate={{
+                        animate={reduceMotion ? undefined : {
                             scale: [1, 1.2, 1],
                             opacity: [0.3, 0.5, 0.3],
                         }}
@@ -79,7 +86,7 @@ export function Home({onNavigate}: HomeProps) {
                     ></motion.div>
                     <motion.div
                         className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl"
-                        animate={{
+                        animate={reduceMotion ? undefined : {
                             scale: [1, 1.3, 1],
                             opacity: [0.3, 0.6, 0.3],
                         }}
@@ -106,7 +113,7 @@ export function Home({onNavigate}: HomeProps) {
                             className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-cyan-500/10 via-teal-500/10 to-cyan-500/10 border border-cyan-500/20 rounded-full mb-8"
                         >
                             <Sparkles className="w-4 h-4 text-cyan-400"/>
-                            <span className="text-sm text-gray-300">Your All-In-One Technology Team</span>
+                            <span className="text-sm text-gray-300">White-Label Fulfillment for Agencies & GHL Specialists</span>
                         </motion.div>
 
                         <motion.h1
@@ -117,12 +124,12 @@ export function Home({onNavigate}: HomeProps) {
                         >
               <span
                   className="bg-linear-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent inline-block">
-                Technology Team For
+                The Build Team Behind
               </span>
                             <br/>
                             <motion.span
                                 className="bg-linear-to-r from-cyan-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent inline-block"
-                                animate={{
+                                animate={reduceMotion ? undefined : {
                                     backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                                 }}
                                 transition={{
@@ -134,7 +141,7 @@ export function Home({onNavigate}: HomeProps) {
                                     backgroundSize: '200% 200%',
                                 }}
                             >
-                                Scalable Growth
+                                Your Agency
                             </motion.span>
                         </motion.h1>
 
@@ -144,9 +151,9 @@ export function Home({onNavigate}: HomeProps) {
                             animate={{opacity: 1}}
                             transition={{delay: 0.5}}
                         >
-                            Get the Business Strategies & the Technology Team you need to accelerate your business in
-                            the digital age. Use technology to solve your customer's challenges and maximize your
-                            company's profits to unlimited potential.
+                            You sell the outcome. We build and ship the system — AI automations, custom web apps,
+                            chatbots and GoHighLevel implementations — under your brand, on your timeline. Your
+                            client never sees us.
                         </motion.p>
 
                         <motion.div
@@ -155,27 +162,9 @@ export function Home({onNavigate}: HomeProps) {
                             transition={{delay: 0.7}}
                             className="flex flex-col sm:flex-row items-center justify-center gap-4"
                         >
-                            <motion.a
-                                onClick={() => onNavigate('contact')}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                whileHover={{scale: 1.05}}
-                                whileTap={{scale: 0.95}}
-                                className="relative group inline-block"
-                            >
-                                <div
-                                    className="absolute inset-0 bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition-opacity"></div>
-                                <div
-                                    className="relative bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 px-8 py-4 rounded-full text-white font-semibold flex items-center gap-2">
-                                    Schedule A Call
-                                    <motion.div
-                                        animate={{x: [0, 5, 0]}}
-                                        transition={{duration: 1.5, repeat: Infinity}}
-                                    >
-                                        <ArrowRight className="w-5 h-5"/>
-                                    </motion.div>
-                                </div>
-                            </motion.a>
+                            <GradientButton onClick={() => onNavigate('contact')}>
+                                Schedule A Call
+                            </GradientButton>
 
                             <motion.button
                                 whileHover={{scale: 1.05, y: -2}}
@@ -218,51 +207,32 @@ export function Home({onNavigate}: HomeProps) {
                 {/* Scroll Indicator */}
                 <motion.div
                     className="absolute bottom-8 left-1/2 -translate-x-1/2"
-                    animate={{y: [0, 10, 0]}}
+                    aria-hidden="true"
+                    animate={reduceMotion ? undefined : {y: [0, 10, 0]}}
                     transition={{duration: 2, repeat: Infinity}}
                 >
                     <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-2">
                         <motion.div
                             className="w-1.5 h-1.5 bg-white/60 rounded-full"
-                            animate={{y: [0, 12, 0]}}
+                            animate={reduceMotion ? undefined : {y: [0, 12, 0]}}
                             transition={{duration: 2, repeat: Infinity}}
                         />
                     </div>
                 </motion.div>
             </section>
 
+            {/* Tooling strip — what we build on */}
+            <LogoSlider/>
+
             {/* Services Section */}
             <section className="relative py-24 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial={{opacity: 0, y: 30}}
-                        whileInView={{opacity: 1, y: 0}}
-                        viewport={{once: true}}
-                        transition={{duration: 0.6}}
-                        className="text-center mb-16"
-                    >
-                        <motion.div
-                            initial={{scale: 0}}
-                            whileInView={{scale: 1}}
-                            viewport={{once: true}}
-                            className="inline-block mb-4"
-                        >
-                            <div
-                                className="px-4 py-2 bg-linear-to-r from-cyan-500/10 to-teal-500/10 border border-cyan-500/20 rounded-full">
-                                <span className="text-sm text-cyan-400 font-semibold">WHAT WE OFFER</span>
-                            </div>
-                        </motion.div>
-                        <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              <span className="bg-linear-to-r from-cyan-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                Our Services
-              </span>
-                        </h2>
-                        <p className="text-gray-400 max-w-3xl mx-auto text-lg">
-                            From website building and branding and CRM systems to complete AI setup and training, we
-                            offer a comprehensive suite of services to help you grow your business and stand out in
-                            today's competitive market.
-                        </p>
-                    </motion.div>
+                    <SectionHeading
+                        eyebrow="WHAT WE OFFER"
+                        title="Our Services"
+                        body="From AI automations and chatbots to custom web apps and full GoHighLevel implementations — we build the systems you sell, ship them under your brand, and hand them over documented."
+                        className="mb-16"
+                    />
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {[
@@ -277,12 +247,12 @@ export function Home({onNavigate}: HomeProps) {
                             },
                             {
                                 number: '02',
-                                icon: Users,
-                                title: 'Dedicated VA Support',
-                                description: 'Reliable and skilled virtual assistants to streamline your business operations.',
+                                icon: LayoutDashboard,
+                                title: 'Custom Web Apps & Dashboards',
+                                description: 'Client-facing portals and reporting dashboards you sell — built and shipped under your brand.',
                                 gradient: 'from-teal-500 to-cyan-500',
-                                features: ['Expert Team', 'Flexible Hours', 'Task Management'],
-                                serviceId: 'va-support',
+                                features: ['Client Portals', 'Dashboards', 'Your Domain'],
+                                serviceId: 'web-apps',
                             },
                             {
                                 number: '03',
@@ -300,71 +270,60 @@ export function Home({onNavigate}: HomeProps) {
                                 whileInView={{opacity: 1, y: 0}}
                                 viewport={{once: true}}
                                 transition={{delay: index * 0.1}}
-                                onHoverStart={() => setHoveredService(index)}
-                                onHoverEnd={() => setHoveredService(null)}
+                                whileHover={{y: -8}}
                                 onClick={() => onNavigate('services', service.serviceId)}
-                                className="relative group cursor-pointer"
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        onNavigate('services', service.serviceId);
+                                    }
+                                }}
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`${service.title} — view service details`}
+                                className="cursor-pointer h-full rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
                             >
-                                <motion.div
-                                    className={`absolute inset-0 bg-linear-to-r ${service.gradient} rounded-2xl blur-xl transition-opacity duration-300`}
-                                    animate={{
-                                        opacity: hoveredService === index ? 0.5 : 0,
-                                    }}
-                                ></motion.div>
-                                <motion.div
-                                    className="relative bg-linear-to-br from-slate-900/90 to-slate-800/90 border border-white/10 rounded-2xl p-8 backdrop-blur-sm h-full"
-                                    whileHover={{y: -8, scale: 1.02}}
-                                    transition={{type: "spring", stiffness: 300}}
-                                >
+                                <GlowCard glow={service.gradient} className="h-full" surfaceClassName="h-full">
                                     <div className="flex items-start justify-between mb-6">
-                                        <motion.span
-                                            className={`text-6xl font-bold bg-linear-to-r ${service.gradient} bg-clip-text text-transparent opacity-50`}
-                                            animate={{
-                                                opacity: hoveredService === index ? 0.8 : 0.5,
-                                            }}
-                                        >
+                                        <span
+                                            className={`text-3xl font-semibold bg-linear-to-r ${service.gradient} bg-clip-text text-transparent opacity-50 transition-opacity group-hover:opacity-90`}>
                                             {service.number}
-                                        </motion.span>
-                                        <motion.div
-                                            className={`p-3 bg-linear-to-r ${service.gradient} rounded-xl`}
-                                            whileHover={{scale: 1.1}}
-                                            transition={{duration: 0.3}}
-                                        >
+                                        </span>
+                                        <div
+                                            className={`p-3 bg-linear-to-r ${service.gradient} rounded-xl transition-transform group-hover:scale-110`}>
                                             <service.icon className="w-6 h-6 text-white"/>
-                                        </motion.div>
+                                        </div>
                                     </div>
                                     <h3 className="text-xl font-semibold text-white mb-4">{service.title}</h3>
                                     <p className="text-gray-400 leading-relaxed mb-6">{service.description}</p>
 
                                     {/* Feature Pills */}
                                     <div className="flex flex-wrap gap-2">
-                                        {service.features.map((feature, i) => (
-                                            <motion.div
-                                                key={i}
-                                                initial={{opacity: 0, scale: 0}}
-                                                whileInView={{opacity: 1, scale: 1}}
-                                                viewport={{once: true}}
-                                                transition={{delay: 0.2 + (i * 0.1)}}
-                                                className={`px-3 py-1 bg-linear-to-r ${service.gradient} bg-opacity-10 rounded-full text-xs text-gray-300 border border-white/10`}
+                                        {service.features.map((feature) => (
+                                            <span
+                                                key={feature}
+                                                className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-xs text-cyan-200"
                                             >
                                                 {feature}
-                                            </motion.div>
+                                            </span>
                                         ))}
                                     </div>
 
-                                    {/* Learn More Button - Always visible on mobile, hover on desktop */}
+                                    {/* Learn More - always visible on mobile, revealed on hover on desktop */}
                                     <div
-                                        className={`mt-6 flex items-center gap-2 text-cyan-400 transition-all duration-300 md:opacity-0 md:translate-x-0 ${hoveredService === index ? 'md:opacity-100 md:translate-x-2.5' : ''}`}
-                                    >
+                                        className="mt-6 flex items-center gap-2 text-cyan-400 transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 md:group-hover:translate-x-2.5">
                                         <span className="text-sm font-semibold">Learn More</span>
                                         <ArrowRight className="w-4 h-4"/>
                                     </div>
-                                </motion.div>
+                                </GlowCard>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
+
+            {/* Core Expertise */}
+            <CoreExpertise/>
 
             {/* Custom Software Solutions */}
             <section className="relative py-24">
@@ -375,22 +334,13 @@ export function Home({onNavigate}: HomeProps) {
                             whileInView={{opacity: 1, x: 0}}
                             viewport={{once: true}}
                         >
-                            <div className="inline-block mb-4">
-                                <div
-                                    className="px-4 py-2 bg-linear-to-r from-cyan-500/10 to-teal-500/10 border border-cyan-500/20 rounded-full">
-                                    <span className="text-sm text-cyan-400 font-semibold">PREMIUM SOLUTIONS</span>
-                                </div>
-                            </div>
-                            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-                <span className="bg-linear-to-r from-cyan-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                  Custom Software Solutions
-                </span>
-                            </h2>
-                            <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                                Our expert team has extensive global business experience and a proven track record of
-                                applying technology-based solutions to overcome growth challenges. We are dedicated to
-                                helping our clients achieve their goals through innovative software solutions.
-                            </p>
+                            <SectionHeading
+                                eyebrow="PREMIUM SOLUTIONS"
+                                title="Custom Software Solutions"
+                                body="Our expert team has extensive global business experience and a proven track record of applying technology-based solutions to overcome growth challenges. We are dedicated to helping our clients achieve their goals through innovative software solutions."
+                                align="left"
+                                className="mb-8"
+                            />
 
                             {/* Check list */}
                             <div className="space-y-4 mb-8">
@@ -417,20 +367,9 @@ export function Home({onNavigate}: HomeProps) {
                                 ))}
                             </div>
 
-                            <motion.button
-                                whileHover={{scale: 1.05}}
-                                whileTap={{scale: 0.95}}
-                                onClick={() => onNavigate('services')}
-                                className="group relative"
-                            >
-                                <div
-                                    className="absolute inset-0 bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity"></div>
-                                <div
-                                    className="relative bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 px-8 py-4 rounded-full text-white font-semibold flex items-center gap-2">
-                                    Learn More
-                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform"/>
-                                </div>
-                            </motion.button>
+                            <GradientButton onClick={() => onNavigate('services')}>
+                                Learn More
+                            </GradientButton>
                         </motion.div>
 
                         <motion.div
@@ -442,7 +381,7 @@ export function Home({onNavigate}: HomeProps) {
                             <div
                                 className="absolute inset-0 bg-linear-to-r from-cyan-500/20 to-teal-500/20 rounded-3xl blur-3xl"></div>
                             <div
-                                className="relative bg-linear-to-br from-slate-900/90 to-slate-800/90 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
+                                className="relative bg-linear-to-br from-slate-900/80 to-slate-800/80 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
                                 <div className="grid grid-cols-2 gap-4">
                                     {[
                                         {icon: Zap, label: 'Fast Delivery', color: 'from-cyan-400 to-teal-400'},
@@ -472,10 +411,9 @@ export function Home({onNavigate}: HomeProps) {
                                                 className={`absolute inset-0 bg-linear-to-r ${item.color} rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity`}></div>
                                             <div
                                                 className="relative bg-linear-to-br from-slate-800/50 to-slate-700/50 border border-white/5 rounded-xl p-6 text-center">
-                                                <div>
-                                                    <item.icon
-                                                        className={`w-8 h-8 mx-auto mb-5 bg-linear-to-r text-cyan-400 bg-clip-text`}
-                                                    />
+                                                <div
+                                                    className={`w-12 h-12 mx-auto mb-4 bg-linear-to-r ${item.color} rounded-xl flex items-center justify-center`}>
+                                                    <item.icon className="w-6 h-6 text-white"/>
                                                 </div>
                                                 <p className="text-sm text-gray-300 font-medium">{item.label}</p>
                                             </div>
@@ -488,94 +426,17 @@ export function Home({onNavigate}: HomeProps) {
                 </div>
             </section>
 
-            {/* Team Expertise */}
-            <section className="relative py-24 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial={{opacity: 0, y: 30}}
-                        whileInView={{opacity: 1, y: 0}}
-                        viewport={{once: true}}
-                        className="text-center mb-16"
-                    >
-                        <div className="inline-block mb-4">
-                            <div
-                                className="px-4 py-2 bg-linear-to-r from-cyan-500/10 to-teal-500/10 border border-cyan-500/20 rounded-full">
-                                <span className="text-sm text-cyan-400 font-semibold">OUR EXPERTISE</span>
-                            </div>
-                        </div>
-                        <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              <span className="bg-linear-to-r from-cyan-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                Our Experienced Team of Experts
-              </span>
-                        </h2>
-                        <p className="text-gray-400 text-lg">
-                            We Take Your Business Ideas To Next Level Of Design And Development.
-                        </p>
-                    </motion.div>
-
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {[
-                            {title: 'AI ChatBot Setup & Training', icon: Bot, gradient: 'from-cyan-500 to-teal-500'},
-                            {title: 'Dedicated VA Support', icon: Users, gradient: 'from-teal-500 to-cyan-500'},
-                            {title: 'CRM Software Solutions', icon: Settings, gradient: 'from-teal-500 to-cyan-500'},
-                            {title: 'Web Development', icon: Sparkles, gradient: 'from-cyan-500 to-teal-500'},
-                        ].map((expertise, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{opacity: 0, y: 30}}
-                                whileInView={{opacity: 1, y: 0}}
-                                viewport={{once: true}}
-                                transition={{delay: index * 0.1}}
-                                whileHover={{scale: 1.05, y: -5}}
-                                className="relative group cursor-pointer"
-                            >
-                                <div
-                                    className={`absolute inset-0 bg-linear-to-r ${expertise.gradient} rounded-xl blur-xl opacity-0 group-hover:opacity-50 transition-all duration-300`}></div>
-                                <div
-                                    className="relative bg-linear-to-br from-slate-900/90 to-slate-800/90 border border-white/10 rounded-xl p-6 text-center backdrop-blur-sm h-full">
-                                    <motion.div
-                                        className={`w-16 h-16 mx-auto mb-4 bg-linear-to-r ${expertise.gradient} rounded-xl flex items-center justify-center`}
-                                        whileHover={{scale: 1.1}}
-                                        transition={{duration: 0.3}}
-                                    >
-                                        <expertise.icon className="w-8 h-8 text-white"/>
-                                    </motion.div>
-                                    <h3 className="text-white font-semibold mb-2">{expertise.title}</h3>
-                                    <motion.div
-                                        className="h-1 bg-linear-to-r from-transparent via-cyan-500 to-transparent mt-4"
-                                        initial={{scaleX: 0}}
-                                        whileInView={{scaleX: 1}}
-                                        viewport={{once: true}}
-                                        transition={{delay: 0.2 + (index * 0.1)}}
-                                    />
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* Social proof — real screenshots (placeholder in dev until supplied) */}
+            <SocialProofWall/>
 
             {/* Testimonials */}
             <section className="relative py-24 bg-slate-950/30">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial={{opacity: 0, y: 30}}
-                        whileInView={{opacity: 1, y: 0}}
-                        viewport={{once: true}}
-                        className="text-center mb-16"
-                    >
-                        <div className="inline-block mb-4">
-                            <div
-                                className="px-4 py-2 bg-linear-to-r from-cyan-500/10 to-teal-500/10 border border-cyan-500/20 rounded-full">
-                                <span className="text-sm text-cyan-400 font-semibold">TESTIMONIALS</span>
-                            </div>
-                        </div>
-                        <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-              <span className="bg-linear-to-r from-cyan-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                What They Said
-              </span>
-                        </h2>
-                    </motion.div>
+                    <SectionHeading
+                        eyebrow="TESTIMONIALS"
+                        title="What They Said"
+                        className="mb-16"
+                    />
 
                     <div className="relative">
                         <motion.div
@@ -588,7 +449,7 @@ export function Home({onNavigate}: HomeProps) {
                             <div
                                 className="absolute inset-0 bg-linear-to-r from-cyan-500/10 to-teal-500/10 rounded-3xl blur-2xl"></div>
                             <div
-                                className="relative bg-linear-to-br from-slate-900/90 to-slate-800/90 border border-white/10 rounded-3xl p-12 backdrop-blur-sm">
+                                className="relative bg-linear-to-br from-slate-900/80 to-slate-800/80 border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 backdrop-blur-sm">
                                 <div className="absolute -top-6 left-12">
                                     <div
                                         className="w-12 h-12 bg-linear-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center">
@@ -629,31 +490,46 @@ export function Home({onNavigate}: HomeProps) {
 
                         <div className="flex items-center justify-center gap-4 mt-8">
                             <motion.button
+                                type="button"
                                 whileHover={{scale: 1.1}}
                                 whileTap={{scale: 0.9}}
                                 onClick={prevTestimonial}
+                                aria-label="Previous testimonial"
                                 className="p-3 bg-slate-800/50 border border-white/10 rounded-full hover:bg-slate-700/50 transition-colors"
                             >
                                 <ChevronLeft className="w-5 h-5 text-white"/>
                             </motion.button>
-                            <div className="flex gap-2">
+                            <div className="flex">
                                 {testimonials.map((_, index) => (
-                                    <motion.button
+                                    /*
+                                     * The 44px touch target lives on the button; the dot is a span inside it.
+                                     * Sizing the button itself would let the global `pointer: coarse` rule in
+                                     * globals.css inflate the dot into a 44px blob on every phone.
+                                     */
+                                    <button
                                         key={index}
+                                        type="button"
                                         onClick={() => setCurrentTestimonial(index)}
-                                        whileHover={{scale: 1.2}}
-                                        className={`h-2 rounded-full transition-all ${
-                                            index === currentTestimonial
-                                                ? 'w-8 bg-linear-to-r from-cyan-500 to-teal-500'
-                                                : 'w-2 bg-gray-600'
-                                        }`}
-                                    />
+                                        aria-label={`Go to testimonial ${index + 1} of ${testimonials.length}`}
+                                        aria-current={index === currentTestimonial}
+                                        className="flex h-11 w-8 items-center justify-center"
+                                    >
+                                        <span
+                                            className={`h-2 rounded-full transition-all ${
+                                                index === currentTestimonial
+                                                    ? 'w-8 bg-linear-to-r from-cyan-500 to-teal-500'
+                                                    : 'w-2 bg-gray-600'
+                                            }`}
+                                        />
+                                    </button>
                                 ))}
                             </div>
                             <motion.button
+                                type="button"
                                 whileHover={{scale: 1.1}}
                                 whileTap={{scale: 0.9}}
                                 onClick={nextTestimonial}
+                                aria-label="Next testimonial"
                                 className="p-3 bg-slate-800/50 border border-white/10 rounded-full hover:bg-slate-700/50 transition-colors"
                             >
                                 <ChevronRight className="w-5 h-5 text-white"/>
@@ -679,119 +555,6 @@ export function Home({onNavigate}: HomeProps) {
                 </div>
             </section>
 
-            {/* Results-Driven Websites */}
-            <section className="relative py-24">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="relative">
-                        <div
-                            className="absolute inset-0 bg-linear-to-r from-cyan-500/10 via-teal-500/10 to-cyan-500/10 rounded-3xl blur-3xl"></div>
-                        <div
-                            className="relative bg-linear-to-br from-slate-900/90 to-slate-800/90 border border-white/10 rounded-3xl p-12 backdrop-blur-sm overflow-hidden">
-                            {/* Decorative Elements */}
-                            <div
-                                className="absolute top-0 right-0 w-64 h-64 bg-linear-to-br from-cyan-500/10 to-teal-500/10 rounded-full blur-3xl"></div>
-
-                            <div className="relative grid lg:grid-cols-2 gap-12 items-center">
-                                <motion.div
-                                    initial={{opacity: 0, x: -30}}
-                                    whileInView={{opacity: 1, x: 0}}
-                                    viewport={{once: true}}
-                                >
-                                    <div className="inline-block mb-4">
-                                        <div
-                                            className="px-4 py-2 bg-linear-to-r from-cyan-500/10 to-teal-500/10 border border-cyan-500/20 rounded-full">
-                                            <span
-                                                className="text-sm text-cyan-400 font-semibold">PREMIUM WEBSITES</span>
-                                        </div>
-                                    </div>
-                                    <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-                    <span
-                        className="bg-linear-to-r from-cyan-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                      Results-Driven Websites
-                    </span>
-                                    </h2>
-                                    <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                                        Experience the perfect fusion of luxury and functionality with our AI-powered
-                                        website solutions. Leveraging the StoryBrand framework, we craft sophisticated
-                                        digital experiences that reflect the excellence of your office, uniquely
-                                        narrating your story and captivating your audience.
-                                    </p>
-                                    <motion.button
-                                        whileHover={{scale: 1.05}}
-                                        whileTap={{scale: 0.95}}
-                                        onClick={() => onNavigate('services')}
-                                        className="group relative"
-                                    >
-                                        <div
-                                            className="absolute inset-0 bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition-opacity"></div>
-                                        <div
-                                            className="relative bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 px-8 py-4 rounded-full text-white font-semibold flex items-center gap-2">
-                                            Learn More
-                                            <ArrowRight
-                                                className="w-5 h-5 group-hover:translate-x-1 transition-transform"/>
-                                        </div>
-                                    </motion.button>
-                                </motion.div>
-
-                                <motion.div
-                                    initial={{opacity: 0, x: 30}}
-                                    whileInView={{opacity: 1, x: 0}}
-                                    viewport={{once: true}}
-                                    className="space-y-6"
-                                >
-                                    {[
-                                        {
-                                            icon: Sparkles,
-                                            title: 'Creativity',
-                                            description: 'Imagination is everything. We know all about design so that you can build the business of your dreams.',
-                                            gradient: 'from-cyan-500 to-teal-500'
-                                        },
-                                        {
-                                            icon: Rocket,
-                                            title: 'Innovation',
-                                            description: 'Innovation is the process of turning "products into profits." We are experts at helping companies developing products.',
-                                            gradient: 'from-teal-500 to-cyan-500'
-                                        },
-                                        {
-                                            icon: Target,
-                                            title: 'Support',
-                                            description: 'If you need support, our success team is here to guide you through all of your technology challenges.',
-                                            gradient: 'from-teal-500 to-cyan-500'
-                                        },
-                                    ].map((item, index) => (
-                                        <motion.div
-                                            key={index}
-                                            initial={{opacity: 0, x: 30}}
-                                            whileInView={{opacity: 1, x: 0}}
-                                            viewport={{once: true}}
-                                            transition={{delay: index * 0.1}}
-                                            whileHover={{x: 10, scale: 1.02}}
-                                            className="flex gap-4 items-start group cursor-pointer"
-                                        >
-                                            <div className="relative">
-                                                <div
-                                                    className={`absolute inset-0 bg-linear-to-r ${item.gradient} rounded-xl blur-md opacity-0 group-hover:opacity-75 transition-opacity`}></div>
-                                                <motion.div
-                                                    className={`relative p-3 bg-linear-to-r ${item.gradient} rounded-xl shrink-0`}
-                                                    whileHover={{scale: 1.1}}
-                                                    transition={{duration: 0.3}}
-                                                >
-                                                    <item.icon className="w-6 h-6 text-white"/>
-                                                </motion.div>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-white font-semibold mb-2 group-hover:text-cyan-400 transition-colors">{item.title}</h3>
-                                                <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </motion.div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* CTA Section */}
             <section className="relative py-24">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -802,12 +565,13 @@ export function Home({onNavigate}: HomeProps) {
                             initial={{opacity: 0, y: 30}}
                             whileInView={{opacity: 1, y: 0}}
                             viewport={{once: true}}
-                            className="relative bg-linear-to-br from-slate-900/90 to-slate-800/90 border border-white/10 rounded-3xl p-12 text-center backdrop-blur-sm overflow-hidden"
+                            className="relative bg-linear-to-br from-slate-900/80 to-slate-800/80 border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 text-center backdrop-blur-sm overflow-hidden"
                         >
                             {/* Animated background elements */}
                             <motion.div
                                 className="absolute top-0 right-0 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl"
-                                animate={{
+                                aria-hidden="true"
+                                animate={reduceMotion ? undefined : {
                                     scale: [1, 1.2, 1],
                                     opacity: [0.3, 0.5, 0.3],
                                 }}
@@ -862,28 +626,11 @@ export function Home({onNavigate}: HomeProps) {
                                 ))}
                             </div>
 
-                            <motion.button
-                                onClick={() => onNavigate('contact')}
-                                whileHover={{scale: 1.05}}
-                                whileTap={{scale: 0.95}}
-                                className="relative group pt-8"
-                            >
-                                <div
-                                    className="absolute inset-0 bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition-opacity"></div>
-                                <div
-                                    className="relative bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 px-8 py-4 rounded-full text-white font-semibold flex items-center gap-2">
-                                    <Phone className="w-5 h-5"/>
-                                    Schedule An Appointment
-                                    <motion.div
-                                        animate={{x: [0, 5, 0]}}
-                                        transition={{duration: 1.5, repeat: Infinity}}
-                                    >
-                                        <ArrowRight className="w-5 h-5"/>
-                                    </motion.div>
-                                </div>
-                            </motion.button>
+                            <GradientButton onClick={() => onNavigate('contact')} icon={Phone} className="mt-8">
+                                Schedule An Appointment
+                            </GradientButton>
 
-                            <p className="text-gray-500 text-sm mt-6">
+                            <p className="text-gray-400 text-sm mt-6">
                                 No credit card required • Free consultation • Quick response
                             </p>
                         </motion.div>

@@ -119,10 +119,8 @@ export function Contact() {
               </span>
                         </h2>
                         <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-                            We're here to help you transform your business with AI-driven solutions. Whether you
-                            need
-                            chatbot setup, virtual assistant support, or GHL automation, our team is ready to assist
-                            you. Get in touch today and let's create something amazing together!
+                            Tell us what you need built. Whether it's an AI automation, a chatbot, a custom web app or
+                            a full GoHighLevel implementation, we'll scope it, build it, and ship it under your brand.
                         </p>
                     </motion.div>
 

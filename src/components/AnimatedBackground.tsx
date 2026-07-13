@@ -1,5 +1,26 @@
 import {motion} from 'motion/react';
-import {useEffect, useState, useMemo} from 'react';
+import {useEffect, useState} from 'react';
+
+interface Particle {
+    id: number;
+    left: string;
+    top: string;
+    duration: number;
+    delay: number;
+}
+
+// Generated once at module load, not during render: Math.random() is impure and the
+// React Compiler rejects it inside a component body. Low-perf devices render a subset.
+const MAX_PARTICLES = 20;
+const LOW_PERF_PARTICLES = 8;
+
+const PARTICLES: Particle[] = [...Array(MAX_PARTICLES)].map((_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    duration: 3 + Math.random() * 3,
+    delay: Math.random() * 2,
+}));
 
 export function AnimatedBackground() {
     const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
@@ -41,17 +62,10 @@ export function AnimatedBackground() {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, [isMobile]);
 
-    // Memoize particles - completely disabled on mobile for performance
-    const particles = useMemo(() => {
-        if (isMobile) return []; // No particles on mobile
-        return [...Array(isLowPerfDevice ? 8 : 20)].map((_, i) => ({
-            id: i,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            duration: 3 + Math.random() * 3,
-            delay: Math.random() * 2,
-        }));
-    }, [isMobile, isLowPerfDevice]);
+    // No particles on mobile; a reduced set on low-performance devices.
+    const particles = isMobile
+        ? []
+        : PARTICLES.slice(0, isLowPerfDevice ? LOW_PERF_PARTICLES : MAX_PARTICLES);
 
     // On mobile, render a simplified static background for better performance
     if (isMobile) {

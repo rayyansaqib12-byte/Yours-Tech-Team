@@ -50,7 +50,7 @@ export function FloatingElements() {
                 >
                     <div className="relative">
                         <div
-                            className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-teal-500 blur-xl opacity-50"></div>
+                            className="absolute inset-0 bg-linear-to-r from-cyan-500 to-teal-500 blur-xl opacity-50"></div>
                         <Icon className="relative w-8 h-8 text-cyan-400/40"/>
                     </div>
                 </motion.div>

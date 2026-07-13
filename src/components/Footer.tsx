@@ -19,7 +19,7 @@ export function Footer({onNavigate}: FooterProps) {
 
     const services = [
         {label: 'AI ChatBot Setup & Training', serviceId: 'ai-chatbot'},
-        {label: 'Dedicated VA Support', serviceId: 'va-support'},
+        {label: 'Custom Web Apps & Dashboards', serviceId: 'web-apps'},
         {label: 'GHL Setup 360', serviceId: 'ghl-setup'},
     ];
 
@@ -29,19 +29,26 @@ export function Footer({onNavigate}: FooterProps) {
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Brand */}
                     <div>
-                        <motion.div
+                        <motion.button
+                            type="button"
                             whileHover={{scale: 1.05}}
-                            className="flex items-center gap-2 mb-4 cursor-pointer"
+                            className="flex items-center gap-2 mb-4 cursor-pointer rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
                             onClick={() => onNavigate('home')}
+                            aria-label="Atomatify — go to home"
                         >
-                            <div className="relative ml-12">
+                            {/* was `ml-12`, which hard-indented the logo 48px out of line with its column */}
+                            <div className="relative">
                                 <img
                                     src={atomatifyLogo}
-                                    alt="Atomatify Logo"
+                                    alt=""
+                                    width={128}
+                                    height={72}
+                                    loading="lazy"
+                                    decoding="async"
                                     className="h-18 w-auto object-contain"
                                 />
                             </div>
-                        </motion.div>
+                        </motion.button>
                         <p className="text-gray-400 leading-relaxed mb-6">
                             Drive growth, retain customers, and scale up effortlessly with Atomatify.
                         </p>

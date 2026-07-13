@@ -1,6 +1,7 @@
 import {motion} from 'motion/react';
-import {Bot, Users, Settings, ArrowRight, Phone, Calendar} from 'lucide-react';
+import {Bot, LayoutDashboard, Settings, ArrowRight, Phone, Calendar} from 'lucide-react';
 import {useState, useEffect, useRef} from 'react';
+import {GradientButton} from './GradientButton';
 
 type Page = 'home' | 'about' | 'services' | 'contact' | 'testimonials';
 
@@ -14,11 +15,6 @@ const ghlForms = {
         formId: 'CJpLMswegtAabJ4krWfo',
         src: 'https://link.mevan.ai/widget/form/CJpLMswegtAabJ4krWfo',
         height: 631,
-    },
-    'Dedicated VA Support': {
-        formId: 'dG3Jbj9lz5XIayJ2PlNn',
-        src: 'https://link.mevan.ai/widget/form/dG3Jbj9lz5XIayJ2PlNn',
-        height: 596,
     },
     'GHL Setup 360': {
         formId: 'Uquntq9FHxW16p0KD62i',
@@ -59,17 +55,17 @@ export function Services({onNavigate, targetService}: ServicesProps) {
             ],
         },
         {
-            id: 'va-support',
-            icon: Users,
-            title: 'Dedicated VA Support',
+            id: 'web-apps',
+            icon: LayoutDashboard,
+            title: 'Custom Web Apps & Dashboards',
             gradient: 'from-teal-500 to-cyan-500',
-            description: 'Our Dedicated Virtual Assistant (VA) Support provides businesses with skilled professionals to handle a wide range of tasks, from administrative work and customer support to scheduling and data management. Whether you need assistance with daily operations or specialized tasks, our VAs ensure efficiency, accuracy, and reliability. By outsourcing to our expert team, you can save time, reduce workload, and focus on scaling your business, while we take care of the rest.',
+            description: 'The client-facing software you sell but do not want to build. We design and ship web apps, client portals and reporting dashboards under your brand — your logo, your domain, your client relationship. You stay the agency of record; we stay invisible. Every build is handed over documented, so your team can support it without calling us.',
             features: [
-                'Administrative task management',
-                'Customer support excellence',
-                'Data entry and management',
-                'Schedule coordination',
-                'Flexible support hours',
+                'Client portals with auth and roles',
+                'Reporting and analytics dashboards',
+                'Deployed on your domain',
+                'Documented handover',
+                'Ongoing build capacity',
             ],
         },
         {
@@ -88,11 +84,14 @@ export function Services({onNavigate, targetService}: ServicesProps) {
         },
     ];
 
-    // Handle opening GHL form popup
+    // Handle opening GHL form popup. Services without a dedicated form send the
+    // visitor to the booking calendar instead, so the button is never inert.
     const openGHLForm = (serviceTitle: string) => {
         const formConfig = ghlForms[serviceTitle as keyof typeof ghlForms];
         if (formConfig) {
             setActiveForm(serviceTitle);
+        } else {
+            onNavigate('contact');
         }
     };
 
@@ -143,9 +142,9 @@ export function Services({onNavigate, targetService}: ServicesProps) {
               </span>
                         </h1>
                         <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                            Unlock the power of AI with our expert solutions, including chatbot setup, virtual assistant
-                            support, and automation services. We help businesses streamline operations and enhance
-                            customer engagement effortlessly.
+                            The systems you sell, built and shipped under your brand. Chatbots, custom web apps and
+                            full GoHighLevel implementations — delivered white-label, documented, and ready to hand
+                            to your client.
                         </p>
                     </motion.div>
                 </div>
@@ -166,9 +165,8 @@ export function Services({onNavigate, targetService}: ServicesProps) {
               </span>
                         </h2>
                         <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-                            Maximize efficiency with our AI solutions, including custom AI consulting, chatbot
-                            integration, virtual assistants, and training designed to boost productivity and streamline
-                            your business.
+                            Three ways agencies and GHL specialists use us as their build team — pick the one you need,
+                            or hand us the whole scope.
                         </p>
                     </motion.div>
 
@@ -300,26 +298,9 @@ export function Services({onNavigate, targetService}: ServicesProps) {
                                 streamline operations, enhance customer engagement, and drive growth for your business.
                             </p>
 
-                            <motion.button
-                                onClick={() => onNavigate('contact')}
-                                whileHover={{scale: 1.05}}
-                                whileTap={{scale: 0.95}}
-                                className="relative group pt-8"
-                            >
-                                <div
-                                    className="absolute inset-0 bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition-opacity"></div>
-                                <div
-                                    className="relative bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 px-8 py-4 rounded-full text-white font-semibold flex items-center gap-2">
-                                    <Phone className="w-5 h-5"/>
-                                    Schedule An Appointment
-                                    <motion.div
-                                        animate={{x: [0, 5, 0]}}
-                                        transition={{duration: 1.5, repeat: Infinity}}
-                                    >
-                                        <ArrowRight className="w-5 h-5"/>
-                                    </motion.div>
-                                </div>
-                            </motion.button>
+                            <GradientButton onClick={() => onNavigate('contact')} icon={Phone} className="mt-8">
+                                Schedule An Appointment
+                            </GradientButton>
                         </div>
                     </motion.div>
                 </div>

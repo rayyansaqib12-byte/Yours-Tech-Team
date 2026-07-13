@@ -1,6 +1,7 @@
 import {motion} from 'motion/react';
-import {Star, Play, Quote, Users, TrendingUp, Award, Check, Video, Phone, ArrowRight} from 'lucide-react';
-import {useState} from 'react';
+import {Star, Play, Quote, Users, TrendingUp, Award, Check, Video, Phone, X} from 'lucide-react';
+import {useState, useEffect} from 'react';
+import {GradientButton} from './GradientButton';
 import rebeccaVideo from '../assets/videos/Rebecca.mp4';
 import stephenVideo from '../assets/videos/Stephen.mov';
 import suzanneVideo from '../assets/videos/Suzanne.mp4';
@@ -120,6 +121,28 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
         ? videoTestimonials
         : videoTestimonials.filter(v => v.category === activeFilter);
 
+    const activeVideo = videoTestimonials.find(v => v.id === selectedVideo);
+
+    // Close the video dialog on Escape and lock body scroll while it is open — the same
+    // contract the GHL form dialog in Services.tsx already honours.
+    useEffect(() => {
+        if (!selectedVideo) return;
+
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setSelectedVideo(null);
+            }
+        };
+
+        document.addEventListener('keydown', handleEscape);
+        document.body.style.overflow = 'hidden';
+
+        return () => {
+            document.removeEventListener('keydown', handleEscape);
+            document.body.style.overflow = 'unset';
+        };
+    }, [selectedVideo]);
+
     return (
         <div className="relative pt-20">
             {/* Hero Section */}
@@ -222,8 +245,17 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
                                 whileInView={{opacity: 1, y: 0}}
                                 viewport={{once: true}}
                                 transition={{delay: index * 0.1}}
-                                className="relative group cursor-pointer"
+                                className="relative group cursor-pointer rounded-3xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-400"
                                 onClick={() => setSelectedVideo(video.id)}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        setSelectedVideo(video.id);
+                                    }
+                                }}
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`Play video testimonial from ${video.name}, ${video.role}`}
                             >
                                 <div
                                     className="absolute inset-0 bg-linear-to-r from-cyan-500/20 to-teal-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -233,7 +265,11 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
                                     <div className="relative aspect-video overflow-hidden">
                                         <img
                                             src={video.thumbnail}
-                                            alt={video.name}
+                                            alt=""
+                                            width={640}
+                                            height={360}
+                                            loading="lazy"
+                                            decoding="async"
                                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                         />
                                         <div
@@ -269,7 +305,12 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
                                                 className="w-12 h-12 rounded-full overflow-hidden border-2 border-cyan-500/50">
                                                 <img
                                                     src={video.thumbnail}
-                                                    alt={video.name}
+                                                    /* Decorative: the name is already in the h3 beside it. */
+                                                    alt=""
+                                                    width={48}
+                                                    height={48}
+                                                    loading="lazy"
+                                                    decoding="async"
                                                     className="w-full h-full object-cover"
                                                 />
                                             </div>
@@ -360,7 +401,7 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
                                         </div>
                                         <div className="flex-1">
                                             <div className="flex items-center gap-2">
-                                                <h4 className="text-white font-semibold">{testimonial.name}</h4>
+                                                <h3 className="text-white font-semibold">{testimonial.name}</h3>
                                                 {testimonial.verified && (
                                                     <div
                                                         className="w-5 h-5 bg-linear-to-r from-cyan-500 to-teal-500 rounded-full flex items-center justify-center">
@@ -369,7 +410,7 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
                                                 )}
                                             </div>
                                             <p className="text-gray-400 text-sm">{testimonial.role}</p>
-                                            <p className="text-gray-500 text-xs mt-1">{testimonial.date}</p>
+                                            <p className="text-gray-400 text-xs mt-1">{testimonial.date}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -424,26 +465,9 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
                                     ))}
                                 </div>
 
-                                <motion.button
-                                    onClick={() => onNavigate('contact')}
-                                    whileHover={{scale: 1.05}}
-                                    whileTap={{scale: 0.95}}
-                                    className="relative group pt-8"
-                                >
-                                    <div
-                                        className="absolute inset-0 bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition-opacity"></div>
-                                    <div
-                                        className="relative bg-linear-to-r from-cyan-500 via-teal-500 to-cyan-500 px-8 py-4 rounded-full text-white font-semibold flex items-center gap-2">
-                                        <Phone className="w-5 h-5"/>
-                                        Start Your Success Story
-                                        <motion.div
-                                            animate={{x: [0, 5, 0]}}
-                                            transition={{duration: 1.5, repeat: Infinity}}
-                                        >
-                                            <ArrowRight className="w-5 h-5"/>
-                                        </motion.div>
-                                    </div>
-                                </motion.button>
+                                <GradientButton onClick={() => onNavigate('contact')} icon={Phone} className="mt-8">
+                                    Start Your Success Story
+                                </GradientButton>
                             </motion.div>
                         </div>
                     </div>
@@ -460,6 +484,9 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
                     className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
                 >
                     <motion.div
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="video-dialog-title"
                         initial={{scale: 0.9, opacity: 0}}
                         animate={{scale: 1, opacity: 1}}
                         exit={{scale: 0.9, opacity: 0}}
@@ -467,29 +494,37 @@ export function Testimonials({onNavigate}: TestimonialsProps) {
                         className="relative max-w-4xl w-full bg-linear-to-br from-slate-900 to-slate-800 border border-white/10 rounded-3xl overflow-hidden"
                     >
                         <button
+                            type="button"
                             onClick={() => setSelectedVideo(null)}
+                            aria-label="Close video"
+                            autoFocus
                             className="absolute top-4 right-4 z-10 w-10 h-10 bg-slate-900/80 hover:bg-slate-800 rounded-full flex items-center justify-center text-white transition-colors"
                         >
-                            ×
+                            <X className="w-5 h-5"/>
                         </button>
 
                         <div className="aspect-video bg-black">
                             <video
-                                src={videoTestimonials.find(v => v.id === selectedVideo)?.videoUrl}
+                                key={selectedVideo}
+                                src={activeVideo?.videoUrl}
+                                poster={activeVideo?.thumbnail}
                                 controls
                                 autoPlay
+                                muted
+                                playsInline
+                                preload="metadata"
                                 className="w-full h-full object-contain"
                             />
                         </div>
 
                         <div className="p-6">
-                            {videoTestimonials.find(v => v.id === selectedVideo) && (
+                            {activeVideo && (
                                 <>
-                                    <h3 className="text-2xl font-bold text-white mb-2">
-                                        {videoTestimonials.find(v => v.id === selectedVideo)?.name}
+                                    <h3 id="video-dialog-title" className="text-2xl font-bold text-white mb-2">
+                                        {activeVideo.name}
                                     </h3>
                                     <p className="text-gray-400">
-                                        {videoTestimonials.find(v => v.id === selectedVideo)?.role}
+                                        {activeVideo.role}
                                     </p>
                                 </>
                             )}
