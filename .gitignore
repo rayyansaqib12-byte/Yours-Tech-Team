@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Unredacted source screenshots. These contain a live client funnel URL, client domains,
+# end-client names and a client's WordPress admin URL. The REDACTED versions that ship
+# live in public/proof/ and ARE committed. Never commit the originals.
+Screenshots/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

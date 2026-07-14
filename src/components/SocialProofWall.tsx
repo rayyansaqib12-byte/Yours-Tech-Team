@@ -16,14 +16,85 @@ export interface ProofItem {
 }
 
 /**
- * Real, permissioned screenshots go here — client messages, delivered work, wins.
+ * Real screenshots of delivered work and partner replies. Nothing here is fabricated.
  *
- * This is EMPTY on purpose. Nothing in this section may be fabricated: no invented
- * messages, names, metrics or logos. Until real (and redacted) screenshots are supplied,
- * the section renders labelled placeholders in development and renders NOTHING in a
- * production build, so a half-finished proof wall can never ship.
+ * REDACTION: every file in public/proof/ has been redacted before use. Covered up:
+ * a live GoHighLevel client funnel URL, two client domains, end-client first names,
+ * a client's business name and WordPress admin URL, and the names of partners who have
+ * not publicly endorsed us. Rebecca Bertoldi and Stephen Bakarich appear unredacted
+ * because they are already public video testimonials on this site.
+ *
+ * The unredacted originals must NOT be committed — see .gitignore.
+ *
+ * If the section is emptied again it renders labelled placeholders in development and
+ * NOTHING in production, so a half-finished proof wall can never ship.
  */
-const PROOF: ProofItem[] = [];
+const PROOF: ProofItem[] = [
+    {
+        src: '/proof/proof-01-funnel-automation-delivered.png',
+        alt: 'Slack message: our team tells a partner the funnel setup and full automation flow is complete and ready to review. The partner replies "Thank you".',
+        caption: 'Funnel plus the full automation flow, built and handed over for review.',
+        tag: 'Automation',
+        width: 1530,
+        height: 252,
+    },
+    {
+        src: '/proof/proof-03-meeting-automation.png',
+        alt: 'Slack message: our team confirms the meeting location is now added to the email templates so contacts automatically receive the Google Meet link. The client replies "thank you".',
+        caption: 'Meeting links now sent automatically from the email templates.',
+        tag: 'GoHighLevel',
+        width: 946,
+        height: 322,
+    },
+    {
+        src: '/proof/proof-02-integration-connected.png',
+        alt: 'Slack message showing a Zapier workflow connected to LeadConnector, with the client replying "Thank you!".',
+        caption: 'Zapier to LeadConnector integration wired up and confirmed working.',
+        tag: 'Integration',
+        width: 986,
+        height: 660,
+    },
+    {
+        src: '/proof/proof-04-funnel-and-thankyou-page.png',
+        alt: 'Slack message: our team delivers a completed funnel. The partner replies "excellent work" and asks whether the thank-you page was also done; our team confirms it is.',
+        caption: 'Funnel and thank-you page shipped. Partner reply: "excellent work".',
+        tag: 'Funnel build',
+        width: 1282,
+        height: 452,
+    },
+    {
+        src: '/proof/proof-06-crm-pipeline-built.png',
+        alt: 'Slack thread showing a newly built CRM pipeline. The partner replies "Perfect", "Looks like we are good to go" and "Thank you so much for all the help".',
+        caption: 'New CRM pipeline built and handed over. "Looks like we are good to go."',
+        tag: 'CRM',
+        width: 1122,
+        height: 844,
+    },
+    {
+        src: '/proof/proof-05-tracking-advice.png',
+        alt: 'Slack message: our team advises placing tracking code through the WordPress builder rather than Google Tag Manager, because GTM applies site-wide. The partner replies "Noted, thank you".',
+        caption: 'Scoping advice that stopped a site-wide tracking change from shipping.',
+        tag: 'Web',
+        width: 1552,
+        height: 406,
+    },
+    {
+        src: '/proof/proof-07-email-campaigns-shipped.png',
+        alt: 'Slack thread: our team reports email copy added across four campaigns and offers to send the links. The client replies "thank you".',
+        caption: 'Email copy shipped across four campaigns.',
+        tag: 'Campaigns',
+        width: 988,
+        height: 930,
+    },
+    {
+        src: '/proof/proof-08-wordpress-walkthrough.png',
+        alt: 'Slack message with a recorded WordPress walkthrough video from our team. The client replies "Thank you so much! I appreciate it."',
+        caption: 'Recorded walkthrough so the client’s team can run it themselves.',
+        tag: 'Handover',
+        width: 1398,
+        height: 1002,
+    },
+];
 
 const PLACEHOLDER_COUNT = 6;
 const PLACEHOLDER_HEIGHTS = ['h-56', 'h-72', 'h-64', 'h-72', 'h-56', 'h-64'];
