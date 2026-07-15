@@ -1,3 +1,13 @@
+import PrimeCareLogo from "../assets/images/primecare-home-care-logo-0.png";
+import KillerContractorsLogo from "../assets/images/killer-contractors-logo-1.png";
+import ConnectionRebellionLogo from "../assets/images/the-connection-rebellion-logo-2.png";
+import LakimiiLogo from "../assets/images/lakimii-academy-log-3.png";
+import AimOnlineMediaLogo from "../assets/images/aim_online_media_logo-4.png";
+import StoneGyeLogo from "../assets/images/stone-gye-academy-5.png";
+import AspireArtistLogo from "../assets/images/aspire-artist-academy-logo-6.png";
+import FortmanAgencyLogo from "../assets/images/fortman-agency-logo-7.png";
+import Marketing222Logo from "../assets/images/222-marketing-logo-8.png";
+
 interface StackLogo {
     name: string;
     /**
@@ -13,14 +23,42 @@ interface StackLogo {
  * certification. Nothing here needs a partner's permission to display.
  */
 const DEFAULT_STACK: StackLogo[] = [
-    {name: 'GoHighLevel'},
-    {name: 'OpenAI'},
-    {name: 'Make'},
-    {name: 'n8n'},
-    {name: 'Zapier'},
-    {name: 'Twilio'},
-    {name: 'Stripe'},
-    {name: 'Supabase'},
+    {
+        name: "PrimeCare Home Care",
+        src: PrimeCareLogo,
+    },
+    {
+        name: "Killer Contractors",
+        src: KillerContractorsLogo,
+    },
+    {
+        name: "The Connection Rebellion",
+        src: ConnectionRebellionLogo,
+    },
+    {
+        name: "Lakimii Academy",
+        src: LakimiiLogo,
+    },
+    {
+        name: "Aim Online Media",
+        src: AimOnlineMediaLogo,
+    },
+    {
+        name: "Stone Gye Academy",
+        src: StoneGyeLogo,
+    },
+    {
+        name: "Aspire Artist Academy",
+        src: AspireArtistLogo,
+    },
+    {
+        name: "Fortman Agency",
+        src: FortmanAgencyLogo,
+    },
+    {
+        name: "222 Marketing",
+        src: Marketing222Logo,
+    },
 ];
 
 interface LogoSliderProps {
