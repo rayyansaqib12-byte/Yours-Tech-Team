@@ -6,7 +6,7 @@ interface CompanyLogo {
 const CLIENT_LOGOS: CompanyLogo[] = [
     {
         name: 'PrimeCare Home Care',
-        src: '/logos/primecare-home-care-logo-0.png',
+        src: '/assets/images/primecare-home-care-logo-0.png',
     },
     {
         name: 'The Connection Rebellion',
