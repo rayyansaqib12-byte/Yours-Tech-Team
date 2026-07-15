@@ -90,7 +90,7 @@ export function LogoSlider({logos = DEFAULT_STACK, label = 'We build on'}: LogoS
                             /* The second pass is a visual duplicate; keep it out of the a11y tree. */
                             aria-hidden={index >= logos.length}
                             /* Fixed box = zero layout shift, and wordmarks/logos align on one baseline. */
-                            className="flex h-10 w-32 shrink-0 items-center justify-center"
+                            className="flex h-20 w-48 shrink-0 items-center justify-center"
                         >
                             {logo.src ? (
                                 <img
@@ -100,7 +100,7 @@ export function LogoSlider({logos = DEFAULT_STACK, label = 'We build on'}: LogoS
                                     height={40}
                                     loading="lazy"
                                     decoding="async"
-                                    className="max-h-8 w-auto object-contain opacity-50 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                                    className="max-h-14 w-auto object-contain opacity-80 transition-all duration-300 hover:scale-105 hover:opacity-100"
                                 />
                             ) : (
                                 <span
