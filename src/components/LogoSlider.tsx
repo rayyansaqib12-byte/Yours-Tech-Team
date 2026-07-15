@@ -1,20 +1,10 @@
-import killerLogo from '../assets/image/killer-contractors-logo-1.png';
-import primecareLogo from '../assets/image/primecare-home-care-logo-0.png';
-import connectionLogo from '../assets/image/the-connection-rebellion-logo-2.png';
-import lakimiiLogo from '../assets/image/lakimii-academy-log-3.png';
-import aimLogo from '../assets/image/aim_online_media_logo-4.png';
-import stoneGyeLogo from '../assets/image/stone-gye-academy-5.png';
-import aspireLogo from '../assets/image/aspire-artist-academy-logo-6.png';
-import fortmanLogo from '../assets/image/fortman-agency-logo-7.png';
-import marketingLogo from '../assets/image/222-marketing-logo-8.png';
-
 interface CompanyLogo {
     name: string;
     src: string;
 }
 
 const COMPANY_LOGOS: CompanyLogo[] = [
-    { name: 'Killer Contractors', src: killerLogo },
+    { name: 'Killer Contractors', src: '../assets/image/killer-contractors-logo-1.png' },
     { name: 'Primecare Home Care', src: primecareLogo },
     { name: 'The Connection Rebellion', src: connectionLogo },
     { name: 'Lakimii Academy', src: lakimiiLogo },
