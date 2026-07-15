@@ -3,43 +3,16 @@ interface CompanyLogo {
     src: string;
 }
 
-const CLIENT_LOGOS: CompanyLogo[] = [
-    {
-        name: 'Killer Contractors',
-        src: '/assets/image/killer-contractors-logo-1.png',
-    },
-    {
-        name: 'Primecare Home Care',
-        src: '/assets/image/primecare-home-care-logo-0.png',
-    },
-    {
-        name: 'The Connection Rebellion',
-        src: '/assets/image/the-connection-rebellion-logo-2.png',
-    },
-    {
-        name: 'Lakimii Academy',
-        src: '/assets/image/lakimii-academy-log-3.png',
-    },
-    {
-        name: 'AIM Online Media',
-        src: '/assets/image/aim_online_media_logo-4.png',
-    },
-    {
-        name: 'StoneGye Agency',
-        src: '/assets/image/stone-gye-academy-5.webp',
-    },
-    {
-        name: 'Aspire Artist Academy',
-        src: '/assets/image/aspire-artist-academy-logo-6.webp',
-    },
-    {
-        name: 'Fortman Agency',
-        src: '/assets/image/fortman-agency-logo-7.png',
-    },
-    {
-        name: '222 Marketing',
-        src: '/assets/image/222-marketing-logo-8.webp',
-    },
+const CLIENT_LOGOS = [
+    { name: 'Killer Contractors', src: '/assets/image/killer-contractors-logo-1.png' },
+    { name: 'Primecare Home Care', src: '/assets/image/primecare-home-care-logo-0.png' },
+    { name: 'The Connection Rebellion', src: '/assets/image/the-connection-rebellion-logo-2.png' },
+    { name: 'Lakimii Academy', src: '/assets/image/lakimii-academy-log-3.png' },
+    { name: 'AIM Online Media', src: '/assets/image/aim_online_media_logo-4.png' },
+    { name: 'StoneGye Agency', src: '/assets/image/stone-gye-academy-5.webp' },
+    { name: 'Aspire Artist Academy', src: '/assets/image/aspire-artist-academy-logo-6.webp' },
+    { name: 'Fortman Agency', src: '/assets/image/fortman-agency-logo-7.png' },
+    { name: '222 Marketing', src: '/assets/image/222-marketing-logo-8.webp' },
 ];
 
 interface LogoSliderProps {
