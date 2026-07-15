@@ -13,7 +13,7 @@ interface StackLogo {
  * certification. Nothing here needs a partner's permission to display.
  */
 const DEFAULT_STACK: StackLogo[] = [
-    { name: 'Company One', src: 'primecare-home-care-logo.png.png' },
+    { name: 'primecare-home-care-logo.png.png' },
     {name: 'OpenAI'},
     {name: 'Make'},
     {name: 'n8n'},
