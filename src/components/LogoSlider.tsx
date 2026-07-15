@@ -1,75 +1,87 @@
-interface StackLogo {
+interface CompanyLogo {
     name: string;
-    /**
-     * Optional logo file. When absent the name renders as a typographic wordmark, so the
-     * strip is honest and complete before any vendor artwork exists. Drop an SVG/PNG in
-     * and it swaps over with no other change.
-     */
-    src?: string;
+    src: string;
 }
 
-/**
- * The tools we build on — a claim about our stack, not about a client roster or a
- * certification. Nothing here needs a partner's permission to display.
- */
-const DEFAULT_STACK: StackLogo[] = [
-    { name: 'primecare-home-care-logo.png.png' },
-    {name: 'OpenAI'},
-    {name: 'Make'},
-    {name: 'n8n'},
-    {name: 'Zapier'},
-    {name: 'Twilio'},
-    {name: 'Stripe'},
-    {name: 'Supabase'},
+const CLIENT_LOGOS: CompanyLogo[] = [
+    {
+        name: 'Killer Contractors',
+        src: '/assets/image/killer-contractors-logo-1.png',
+    },
+    {
+        name: 'Primecare Home Care',
+        src: '/assets/image/primecare-home-care-logo-0.png',
+    },
+    {
+        name: 'The Connection Rebellion',
+        src: '/assets/image/the-connection-rebellion-logo-2.png',
+    },
+    {
+        name: 'Lakimii Academy',
+        src: '/assets/image/lakimii-academy-log-3.png',
+    },
+    {
+        name: 'AIM Online Media',
+        src: '/assets/image/aim_online_media_logo-4.png',
+    },
+    {
+        name: 'StoneGye Agency',
+        src: '/assets/image/stone-gye-academy-5.webp',
+    },
+    {
+        name: 'Aspire Artist Academy',
+        src: '/assets/image/aspire-artist-academy-logo-6.webp',
+    },
+    {
+        name: 'Fortman Agency',
+        src: '/assets/image/fortman-agency-logo-7.png',
+    },
+    {
+        name: '222 Marketing',
+        src: '/assets/image/222-marketing-logo-8.webp',
+    },
 ];
 
 interface LogoSliderProps {
-    logos?: StackLogo[];
+    logos?: CompanyLogo[];
     label?: string;
 }
 
-export function LogoSlider({logos = DEFAULT_STACK, label = 'We build on'}: LogoSliderProps) {
-    // Rendered twice so the -50% translation lands exactly on the seam.
+export function LogoSlider({
+    logos = CLIENT_LOGOS,
+    label = 'Companies we have worked with',
+}: LogoSliderProps) {
     const track = [...logos, ...logos];
 
     return (
-        <section aria-label="Technologies we build on" className="relative py-12 border-y border-white/5">
-            <p className="text-center text-xs uppercase tracking-[0.2em] text-gray-400 mb-8">
+        <section
+            aria-label="Companies we have worked with"
+            className="relative py-12 border-y border-white/5"
+        >
+            <p className="mb-8 text-center text-xs uppercase tracking-[0.2em] text-gray-400">
                 {label}
             </p>
 
             <div className="group relative overflow-hidden">
-                {/* Edge fades, so logos dissolve rather than getting guillotined at the bounds. */}
-                <div
-                    className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 sm:w-24 bg-linear-to-r from-slate-950 to-transparent"></div>
-                <div
-                    className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 sm:w-24 bg-linear-to-l from-slate-950 to-transparent"></div>
+                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-linear-to-r from-slate-950 to-transparent sm:w-24" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-linear-to-l from-slate-950 to-transparent sm:w-24" />
 
-                <ul className="flex w-max items-center gap-12 sm:gap-16 animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused]">
+                <ul className="flex w-max items-center gap-8 animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused] sm:gap-12">
                     {track.map((logo, index) => (
                         <li
                             key={`${logo.name}-${index}`}
-                            /* The second pass is a visual duplicate; keep it out of the a11y tree. */
                             aria-hidden={index >= logos.length}
-                            /* Fixed box = zero layout shift, and wordmarks/logos align on one baseline. */
-                            className="flex h-10 w-32 shrink-0 items-center justify-center"
+                            className="flex h-20 w-44 shrink-0 items-center justify-center rounded-lg bg-white/5 px-4 py-3 ring-1 ring-white/10"
                         >
-                            {logo.src ? (
-                                <img
-                                    src={logo.src}
-                                    alt={logo.name}
-                                    width={128}
-                                    height={40}
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="max-h-8 w-auto object-contain opacity-50 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
-                                />
-                            ) : (
-                                <span
-                                    className="whitespace-nowrap text-lg font-semibold tracking-wide text-gray-400 transition-colors duration-300 hover:text-cyan-300">
-                                    {logo.name}
-                                </span>
-                            )}
+                            <img
+                                src={logo.src}
+                                alt={logo.name}
+                                width={176}
+                                height={80}
+                                loading="lazy"
+                                decoding="async"
+                                className="max-h-14 max-w-36 object-contain"
+                            />
                         </li>
                     ))}
                 </ul>
