@@ -6,7 +6,7 @@ interface CompanyLogo {
 const CLIENT_LOGOS: CompanyLogo[] = [
     {
         name: 'Killer Contractors',
-        src: '/assets/image/killer-contractors-logo-1.png',
+        src: 'src/assets/image/killer-contractors-logo-1.png',
     },
     {
         name: 'Primecare Home Care',
