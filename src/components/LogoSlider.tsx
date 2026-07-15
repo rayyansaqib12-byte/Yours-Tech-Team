@@ -66,7 +66,7 @@ interface LogoSliderProps {
     label?: string;
 }
 
-export function LogoSlider({logos = DEFAULT_STACK, label = 'We build on'}: LogoSliderProps) {
+export function LogoSlider({logos = DEFAULT_STACK, label = 'Trusted by'}: LogoSliderProps) {
     // Rendered twice so the -50% translation lands exactly on the seam.
     const track = [...logos, ...logos];
 
