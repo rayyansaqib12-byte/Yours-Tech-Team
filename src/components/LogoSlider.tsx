@@ -26,11 +26,11 @@ const CLIENT_LOGOS: CompanyLogo[] = [
     },
     {
         name: 'StoneGye Agency',
-        src: '/assets/image/stone-gye-academy-5.webp',
+        src: '/assets/image/stone-gye-academy-5.png',
     },
     {
         name: 'Aspire Artist Academy',
-        src: '/assets/image/aspire-artist-academy-logo-6.webp',
+        src: '/assets/image/aspire-artist-academy-logo-6.png',
     },
     {
         name: 'Fortman Agency',
@@ -38,7 +38,7 @@ const CLIENT_LOGOS: CompanyLogo[] = [
     },
     {
         name: '222 Marketing',
-        src: '/assets/image/222-marketing-logo-8.webp',
+        src: '/assets/image/222-marketing-logo-8.png',
     },
 ];
 
