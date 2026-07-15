@@ -13,7 +13,7 @@ interface StackLogo {
  * certification. Nothing here needs a partner's permission to display.
  */
 const DEFAULT_STACK: StackLogo[] = [
-    {name: 'GoHighLevel'},
+    { name: 'Company One', src: '/logos/company-one.svg' },
     {name: 'OpenAI'},
     {name: 'Make'},
     {name: 'n8n'},
